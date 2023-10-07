@@ -38,7 +38,7 @@ export async function set6() {
     await kv.set([_2K], _1K)
 }
 
-// key: 2KiB, value: 64KiB  => 66 (unit)
+// key: 2KiB, value: 64KiB  => 65 (unit)
 export async function set7() {
     await kv.set([_2K], _64K)
 }
