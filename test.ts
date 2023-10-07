@@ -1,3 +1,3 @@
-import {clear} from "./kv.ts"
+import {clear} from "./utils.ts"
 
 await clear()

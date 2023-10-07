@@ -1,28 +1,19 @@
-import * as kv from "./kv.ts"
+import * as setOps from "./ops/set.ts"
+import * as getOps from "./ops/get.ts"
+import * as deleteOps from "./ops/delete.ts"
 
-type WriteOp = 'write1' | 'write2' | 'write3' | 'write4' | 'write5' | 'write6' | 'write7'
-const writeOps = ['write1', 'write2', 'write3', 'write4', 'write5', 'write6', 'write7']
 
 Deno.serve(async (req: Request) => {
     const url = new URL(req.url)
-    const token = req.headers.get('token')
+    const op = url.searchParams.get('op')!
+    console.log(`execute operation: ${op}`)
 
-    if (token === '666') {
-        if (url.pathname === '/read') {
-            console.log('read')
-            await kv.read()
-        } else if (url.pathname === '/write') {
-            const data = url.searchParams.get('data')!
-            const op = url.searchParams.get('op')! as WriteOp
-
-            if (writeOps.includes(op)) {
-                console.log(`op: ${op}, data: ${data}`)
-                await kv[op](data)
-            }
-        } else if (url.pathname === '/clear') {
-            console.log('clear')
-            await kv.clear()
-        }
+    if (op.startsWith('get')) {
+        await getOps[op as keyof typeof getOps]()
+    } else if (op.startsWith('set')) {
+        await setOps[op as keyof typeof setOps]()
+    } else if (op.startsWith('delete')) {
+        await deleteOps[op as keyof typeof deleteOps]()
     }
 
     return new Response(`response to ${req.url}`)
