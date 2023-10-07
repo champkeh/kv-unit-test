@@ -6,6 +6,7 @@
   "author": "champkeh <champion.ge@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "deno run -A --unstable app.ts"
+    "dev": "deno run -A --unstable app.ts",
+    "test": "deno run -A --unstable test.ts"
   }
 }

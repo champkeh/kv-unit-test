@@ -31,17 +31,14 @@ export async function get() {
 }
 
 
-
-function makeData(len = 10) {
-    return Array.from({length: len}).fill('i').join('')
+function makeData(data = '0', len = 10) {
+    return Array.from({length: len}).fill(data).join('')
 }
 
 // units/day (1kb)
-export async function write() {
-    const value = makeData(1024 * 64 - 6)
-    const key = makeData(1024 * 2 - 2)
-    // console.log(value.length)
-    // console.log(JSON.stringify(value).length)
+export async function write(char: string) {
+    const value = makeData(char, 1024 * 64 - 6)
+    const key = makeData(char, 1024 * 2 - 2)
     await kv.set([key], value)
 }
 

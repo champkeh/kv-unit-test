@@ -9,9 +9,9 @@ Deno.serve(async (req: Request) => {
         if (url.pathname === '/read') {
             console.log('read')
             await read()
-        } else if (url.pathname === '/write') {
+        } else if (url.pathname === '/write' && url.searchParams.has('data')) {
             console.log('write')
-            await write()
+            await write(url.searchParams.get('data')!)
         } else if (url.pathname === '/clear') {
             console.log('clear')
             await clear()
