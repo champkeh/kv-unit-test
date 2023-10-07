@@ -50,7 +50,6 @@ export async function clear() {
 
 // key: 1k  value: 1k  => 2 unit
 export async function write1(char: string) {
-    console.log('write 1:')
     const key = makeData(char, 1000)
     const value = makeData(char, 1000)
     await kv.set([key], value)
@@ -58,7 +57,6 @@ export async function write1(char: string) {
 
 // key: 10  value: 2k  => 2 unit
 export async function write2(char: string) {
-    console.log('write 2:')
     const key = makeData(char, 10)
     const value = makeData(char, 1000 * 2)
     await kv.set([key], value)
@@ -66,7 +64,6 @@ export async function write2(char: string) {
 
 // key: 10  value: 1k  => 1 unit
 export async function write3(char: string) {
-    console.log('write 3:')
     const key = makeData(char, 10)
     const value = makeData(char, 1000)
     await kv.set([key], value)
@@ -74,7 +71,6 @@ export async function write3(char: string) {
 
 // key: 10, value: 10  => 1 unit
 export async function write4(char: string) {
-    console.log('write 4:')
     const key = makeData(char, 500)
     const value = makeData(char, 500)
     await kv.set([key], value)
@@ -82,14 +78,13 @@ export async function write4(char: string) {
 
 // key: 2k, value: 1k  => 3 unit
 export async function write5(char: string) {
-    console.log('write 5:')
     const key = makeData(char, 2000)
     const value = makeData(char, 1000)
     await kv.set([key], value)
 }
 
+// 3 unit
 export async function write6(char: string) {
-    console.log('write 6:')
     const key = makeData(char, 10)
     const value = makeData(char, 10)
     await kv.set([key + '1'], value + '1')
@@ -97,8 +92,8 @@ export async function write6(char: string) {
     await kv.set([key + '3'], value + '3')
 }
 
+// 1 unit
 export async function write7(char: string) {
-    console.log('write 7:')
     const key = makeData(char, 10)
     const value = makeData(char, 10)
     await kv.atomic()

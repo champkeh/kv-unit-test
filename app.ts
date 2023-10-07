@@ -16,7 +16,7 @@ Deno.serve(async (req: Request) => {
             const op = url.searchParams.get('op')! as WriteOp
 
             if (writeOps.includes(op)) {
-                console.log('write', op, data)
+                console.log(`op: ${op}, data: ${data}`)
                 await kv[op](data)
             }
         } else if (url.pathname === '/clear') {
