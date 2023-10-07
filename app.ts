@@ -6,7 +6,6 @@ const writeOps = ['write1', 'write2', 'write3', 'write4', 'write5', 'write6', 'w
 Deno.serve(async (req: Request) => {
     const url = new URL(req.url)
     const token = req.headers.get('token')
-    console.log(url)
 
     if (token === '666') {
         if (url.pathname === '/read') {
