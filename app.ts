@@ -12,9 +12,14 @@ import {insertLarge} from "./ops/atomic.ts";
 
 import kv from "./kv.ts";
 
+let count = 0
 kv.listenQueue((value) => {
     console.log('received value:')
     console.log(value)
+
+    if (count < 100) {
+        kv.enqueue(++count, {delay: 20 * 1000})
+    }
 })
 
 Deno.serve(async (req: Request) => {
