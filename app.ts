@@ -11,8 +11,13 @@ import {insertLarge} from "./ops/atomic.ts";
 
 
 Deno.serve(async (req: Request) => {
+    console.log(req.url)
     const url = new URL(req.url)
     const op = url.searchParams.get('op')!
+
+    if (!op) {
+        return new Response('op param is null')
+    }
     console.log(`execute operation: ${op}`)
 
     if (op.startsWith('get')) {
