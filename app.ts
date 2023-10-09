@@ -6,6 +6,7 @@ import * as deleteOps from "./ops/delete.ts"
 import * as sumOps from "./ops/sum.ts"
 import * as minOps from "./ops/min.ts"
 import * as maxOps from "./ops/max.ts"
+import * as enqueueOps from "./ops/enqueue.ts"
 import {insertLarge} from "./ops/atomic.ts";
 
 
@@ -32,6 +33,8 @@ Deno.serve(async (req: Request) => {
         await maxOps[op as keyof typeof maxOps]()
     } else if (op === 'insertLarge') {
         await insertLarge()
+    } else if (op.startsWith('enqueue')) {
+        await enqueueOps[op as keyof typeof enqueueOps]()
     }
 
     return new Response(`response to ${req.url}`)
