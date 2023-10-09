@@ -10,6 +10,13 @@ import * as enqueueOps from "./ops/enqueue.ts"
 import {insertLarge} from "./ops/atomic.ts";
 
 
+import kv from "./kv.ts";
+
+kv.listenQueue((value) => {
+    console.log('received value:')
+    console.log(value)
+})
+
 Deno.serve(async (req: Request) => {
     console.log(req.url)
     const url = new URL(req.url)
