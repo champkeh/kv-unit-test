@@ -14,8 +14,7 @@ import kv from "./kv.ts";
 
 let count = 0
 kv.listenQueue((value) => {
-    console.log('received value:')
-    console.log(value)
+    console.log(`received value: ${value}`)
 
     kv.enqueue(++count, {delay: 30 * 1000})
 })
