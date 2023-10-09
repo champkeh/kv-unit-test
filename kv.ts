@@ -8,7 +8,7 @@ if (runInDenoDeploy()) {
 } else {
     const env = await dotenv.load()
     Deno.env.set('DENO_KV_ACCESS_TOKEN', env["DENO_KV_ACCESS_TOKEN"])
-    kv = await Deno.openKv("https://api.deno.com/databases/d64e0c74-717b-49b3-a4ca-d3212045cb8a/connect");
+    kv = await Deno.openKv("https://api.deno.com/databases/11a27e67-7cc4-4806-a17b-6b2c54c3d389/connect");
 }
 
 export default kv
