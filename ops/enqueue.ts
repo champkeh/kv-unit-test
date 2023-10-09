@@ -1,5 +1,5 @@
 import kv from "../kv.ts"
-import {_10B, _1K, _2K, _64K} from "./const.ts";
+import {_100K, _10B, _1K, _1M, _2K, _64K} from "./const.ts";
 
 
 // 18 write units
@@ -36,5 +36,19 @@ export async function enqueue5() {
     await kv.enqueue(_64K, {
         delay: 10 * 1000,
         keysIfUndelivered: [["delivered for enqueue5"]]
+    })
+}
+
+export async function enqueue6() {
+    await kv.enqueue(_100K, {
+        delay: 10 * 1000,
+        keysIfUndelivered: [["delivered for enqueue6"]]
+    })
+}
+
+export async function enqueue7() {
+    await kv.enqueue(_1M, {
+        delay: 10 * 1000,
+        keysIfUndelivered: [["delivered for enqueue7"]]
     })
 }
