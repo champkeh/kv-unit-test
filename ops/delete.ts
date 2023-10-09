@@ -9,10 +9,7 @@ export async function delete2() {
     await kv.delete([_1K])
 }
 
+// 2Kib  => 2 unit
 export async function delete3() {
     await kv.delete([_2K])
-}
-
-export async function delete4() {
-    await kv.delete([_64K])
 }
